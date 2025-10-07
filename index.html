@@ -1,108 +1,589 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лучший партнер для вязки - Французский бульдог</title>
+    <title>Gold the Dog — фото, истории и модерация</title>
     <style>
+        :root {
+            color-scheme: light;
+            --background: #f7f3ef;
+            --surface: #ffffff;
+            --surface-soft: rgba(255, 255, 255, 0.8);
+            --text: #2f1d1d;
+            --muted: #7a5f5f;
+            --accent: #d27d2d;
+            --accent-dark: #a65f16;
+            --highlight: #ffe8c7;
+            --success: #3c9468;
+            --warning: #c8553d;
+            --info: #476ec1;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #f7f7f7;
-            color: #333;
-        }
-        .header {
-            width: 100%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .container {
-            background-color: #fff;
-            padding: 40px 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            text-align: center;
-            width: 90%;
-            max-width: 800px;
-            margin: 20px;
-        }
-        h1 {
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #007BFF;
-        }
-        p {
-            margin: 10px 0;
-            font-size: 18px;
-            color: #555;
+            font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgba(255, 245, 235, 0.9) 0%, rgba(247, 243, 239, 1) 45%, rgba(243, 237, 233, 1) 100%);
+            color: var(--text);
             line-height: 1.6;
         }
-        .contact-info {
-            margin-top: 20px;
-        }
-        .contact-info p {
-            margin: 5px 0;
-        }
-        .button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            color: white;
-            background-color: #007BFF;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+
+        a {
+            color: inherit;
             text-decoration: none;
-            transition: background-color 0.3s ease;
         }
-        .button:hover {
-            background-color: #0056b3;
+
+        header {
+            background: linear-gradient(135deg, #fddba6 0%, #f7b26a 40%, #f2855c 100%);
+            color: #2f1d1d;
+            padding: 28px clamp(16px, 6vw, 72px) 48px;
+            position: relative;
+            overflow: hidden;
         }
-        .gallery {
+
+        header::after {
+            content: "";
+            position: absolute;
+            right: -120px;
+            bottom: -160px;
+            width: 420px;
+            height: 420px;
+            background: rgba(255, 255, 255, 0.25);
+            border-radius: 50%;
+            filter: blur(0.5px);
+        }
+
+        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            position: relative;
+            z-index: 2;
             flex-wrap: wrap;
-            margin-top: 30px;
         }
-        .gallery img {
-            width: 45%;
-            margin: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .brand {
+            font-size: clamp(22px, 3vw, 30px);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
         }
-        @media (max-width: 768px) {
-            .gallery img {
-                width: 90%;
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: clamp(16px, 4vw, 32px);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav li {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: rgba(47, 29, 29, 0.86);
+            position: relative;
+        }
+
+        nav li::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.2s ease;
+        }
+
+        nav li:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            margin-top: 48px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 36px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            margin: 0 0 16px;
+            font-size: clamp(36px, 5vw, 56px);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-text p {
+            margin: 0;
+            font-size: clamp(17px, 2vw, 20px);
+            max-width: 520px;
+        }
+
+        .hero-meta {
+            margin-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .badge {
+            padding: 8px 16px;
+            border-radius: 999px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            background: rgba(47, 29, 29, 0.1);
+        }
+
+        .hero-card {
+            background: var(--surface);
+            border-radius: 28px;
+            padding: 24px;
+            display: grid;
+            gap: 16px;
+            box-shadow: 0 18px 38px rgba(47, 29, 29, 0.15);
+            position: relative;
+        }
+
+        .hero-card strong {
+            font-size: 15px;
+            color: var(--muted);
+            letter-spacing: 0.04em;
+        }
+
+        main {
+            padding: clamp(32px, 6vw, 80px);
+            display: grid;
+            gap: 64px;
+        }
+
+        section {
+            background: var(--surface);
+            border-radius: 26px;
+            padding: clamp(24px, 4vw, 48px);
+            box-shadow: 0 12px 28px rgba(47, 29, 29, 0.08);
+            position: relative;
+        }
+
+        section::before {
+            content: "";
+            position: absolute;
+            inset: 12px;
+            border-radius: 22px;
+            border: 1px solid rgba(210, 125, 45, 0.18);
+            pointer-events: none;
+        }
+
+        section header {
+            background: none;
+            padding: 0;
+            box-shadow: none;
+            color: inherit;
+        }
+
+        section h2 {
+            margin: 0 0 18px;
+            font-size: clamp(24px, 3vw, 32px);
+        }
+
+        .about-grid {
+            display: grid;
+            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        }
+
+        .about-item {
+            background: var(--surface-soft);
+            border-radius: 20px;
+            padding: 20px 22px;
+            display: grid;
+            gap: 12px;
+            border: 1px dashed rgba(210, 125, 45, 0.35);
+        }
+
+        .about-item span {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+        }
+
+        .about-item p {
+            margin: 0;
+        }
+
+        .stories-board {
+            display: grid;
+            gap: 24px;
+        }
+
+        .story-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter {
+            padding: 10px 18px;
+            border-radius: 999px;
+            background: var(--highlight);
+            border: 1px solid rgba(210, 125, 45, 0.3);
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .filter:hover {
+            transform: translateY(-2px);
+        }
+
+        .story-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .story-card {
+            display: grid;
+            gap: 12px;
+            padding: 22px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(71, 110, 193, 0.18);
+            position: relative;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border-radius: 12px;
+            padding: 6px 12px;
+        }
+
+        .status.published { background: rgba(60, 148, 104, 0.16); color: var(--success); }
+        .status.review { background: rgba(71, 110, 193, 0.16); color: var(--info); }
+        .status.draft { background: rgba(200, 85, 61, 0.14); color: var(--warning); }
+
+        .story-meta {
+            font-size: 14px;
+            color: var(--muted);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .actions button {
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .approve { background: var(--success); color: white; }
+        .edit { background: var(--info); color: white; }
+        .archive { background: rgba(47, 29, 29, 0.08); color: var(--text); }
+
+        .actions button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(47, 29, 29, 0.15);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .photo {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 16px 24px rgba(47, 29, 29, 0.15);
+        }
+
+        .photo img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo caption {
+            position: absolute;
+            left: 16px;
+            bottom: 16px;
+            padding: 8px 14px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            letter-spacing: 0.04em;
+        }
+
+        .moderation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .moderation-card {
+            background: rgba(255, 255, 255, 0.86);
+            border: 1px solid rgba(47, 29, 29, 0.08);
+            border-radius: 20px;
+            padding: 20px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .moderation-card h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        .advert {
+            background: linear-gradient(135deg, rgba(71, 110, 193, 0.12), rgba(210, 125, 45, 0.18));
+            display: grid;
+            gap: 16px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .advert strong {
+            font-size: clamp(22px, 3vw, 28px);
+            letter-spacing: 0.04em;
+        }
+
+        .advert-call {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: var(--accent);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 36px clamp(16px, 6vw, 72px) 48px;
+            background: #2f1d1d;
+            color: rgba(255, 255, 255, 0.78);
+            display: grid;
+            gap: 18px;
+        }
+
+        footer nav {
+            justify-content: flex-start;
+            gap: 28px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 720px) {
+            nav ul {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            header {
+                padding-bottom: 56px;
+            }
+
+            .actions button {
+                flex: 1 1 120px;
+            }
+
+            footer nav {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Лучший партнер для вязки</h1>
-    </div>
-    <div class="container">
-        <h1>Французский бульдог - Готов к новым связям</h1>
-        <p>Познакомьтесь с нашим потрясающим французским бульдогом, который готов подарить вам лучшее потомство. Он обладает отличными генетическими качествами, прекрасным здоровьем и великолепным характером.</p>
-        <p>Наш французский бульдог имеет все необходимые документы и подтверждения, что делает его идеальным партнером для вязки. Он дружелюбен, умён и всегда готов к новым знакомствам.</p>
-        <div class="contact-info">
-            <p><strong>Свяжитесь с нами:</strong></p>
-            <p>Номер телефона: <a href="tel:0676260848">0676260848</a></p>
+    <header>
+        <nav>
+            <div class="brand">Gold the Dog</div>
+            <ul>
+                <li><a href="#stories">истории</a></li>
+                <li><a href="#gallery">фотографии</a></li>
+                <li><a href="#moderation">модерация</a></li>
+                <li><a href="#contacts">контакты</a></li>
+            </ul>
+        </nav>
+        <div class="hero">
+            <div class="hero-text">
+                <h1>Золотой ретривер Голд — главный герой семейных приключений</h1>
+                <p>Этот сайт посвящён доброму и смешному псу Голду. Здесь мы публикуем лучшие фото, истории про его шалости и держим под контролем весь контент, чтобы модерации было легко работать.</p>
+                <div class="hero-meta">
+                    <span class="badge">возраст: 4 года</span>
+                    <span class="badge">любимое занятие: приносить тапочки</span>
+                    <span class="badge">город: Санкт-Петербург</span>
+                </div>
+            </div>
+            <div class="hero-card">
+                <strong>Быстрый доступ:</strong>
+                <span>• Новые истории появляются каждую пятницу.</span>
+                <span>• Модератор видит статус каждой истории и может оперативно внести правки.</span>
+                <span>• Блок рекламы вязки всегда остаётся на видном месте.</span>
+            </div>
         </div>
-        <a href="tel:0676260848" class="button">Позвонить сейчас</a>
-        <div class="gallery">
-            <img src="dog1.jpg" alt="Французский бульдог 1">
-            <img src="dog2.jpg" alt="Французский бульдог 2">
-            <img src="dog3.jpg" alt="Французский бульдог 3">
-            <img src="dog4.jpg" alt="Французский бульдог 4">
-        </div>
-    </div>
+    </header>
+
+    <main>
+        <section aria-labelledby="about-title">
+            <h2 id="about-title">Почему Голд заслуживает собственный сайт</h2>
+            <div class="about-grid">
+                <div class="about-item">
+                    <span>характер</span>
+                    <p>Голд — харизматичный оптимист, который любит знакомиться с людьми и фотографироваться. Каждая прогулка превращается в мини-съёмку.</p>
+                </div>
+                <div class="about-item">
+                    <span>смешные привычки</span>
+                    <p>Он ворует носки только по вторникам и всегда складывает их в свою корзину. Это основа многих историй на сайте.</p>
+                </div>
+                <div class="about-item">
+                    <span>цель сайта</span>
+                    <p>Публиковать истории, делиться фото и получать отклики от поклонников, сохраняя контроль качества через удобную модерацию.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="stories" aria-labelledby="stories-title">
+            <h2 id="stories-title">Панель историй</h2>
+            <div class="stories-board">
+                <div class="story-controls">
+                    <button class="filter">Все</button>
+                    <button class="filter">Опубликованные</button>
+                    <button class="filter">На проверке</button>
+                    <button class="filter">Черновики</button>
+                </div>
+                <div class="story-list">
+                    <article class="story-card">
+                        <span class="status published">Опубликовано</span>
+                        <h3>Как Голд научил соседа приносить газеты</h3>
+                        <p>Утро началось с шума у двери, а закончилось тем, что сосед по площадке теперь ежедневно приносит газеты в обмен на дружеское покусывание шнурков.</p>
+                        <div class="story-meta">
+                            <span>дата публикации: 12 апреля</span>
+                            <span>теги: #соседи #обучение</span>
+                        </div>
+                        <div class="actions">
+                            <button class="approve">В топ</button>
+                            <button class="edit">Редактировать</button>
+                            <button class="archive">Архивировать</button>
+                        </div>
+                    </article>
+                    <article class="story-card">
+                        <span class="status review">На проверке</span>
+                        <h3>Миссия «Спасти плюшевого жирафа»</h3>
+                        <p>История о том, как Голд помог ребёнку на детской площадке вернуть любимую игрушку, используя только обаяние и громкий лай.</p>
+                        <div class="story-meta">
+                            <span>дата: 9 апреля</span>
+                            <span>ответственный модератор: Анна</span>
+                        </div>
+                        <div class="actions">
+                            <button class="approve">Одобрить</button>
+                            <button class="edit">Править текст</button>
+                            <button class="archive">Отложить</button>
+                        </div>
+                    </article>
+                    <article class="story-card">
+                        <span class="status draft">Черновик</span>
+                        <h3>Когда Голд решил, что зум — это свисток</h3>
+                        <p>Во время онлайн-встречи Голд постоянно откликался на звук микрофона, поэтому пришлось дать ему «служебный» свисток.</p>
+                        <div class="story-meta">
+                            <span>дата обновления: 7 апреля</span>
+                            <span>автор: Вова</span>
+                        </div>
+                        <div class="actions">
+                            <button class="edit">Дописать</button>
+                            <button class="archive">Удалить</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" aria-labelledby="gallery-title">
+            <h2 id="gallery-title">Фотобанк Голда</h2>
+            <div class="gallery">
+                <figure class="photo">
+                    <img src="dog1.jpg" alt="Голд лежит на траве и смотрит в объектив">
+                    <caption>«Главный модератор» — любимый кадр для обложки.</caption>
+                </figure>
+                <figure class="photo">
+                    <img src="dog2.jpg" alt="Голд бежит по пляжу с мячиком">
+                    <caption>Энергия для раздела со смешными историями.</caption>
+                </figure>
+                <figure class="photo">
+                    <img src="dog3.jpg" alt="Голд сидит в пледе у окна">
+                    <caption>Фото для уютных вечерних публикаций.</caption>
+                </figure>
+                <figure class="photo">
+                    <img src="dog4.jpg" alt="Голд улыбается крупным планом">
+                    <caption>Используется в рекламе вязки и постах о характерах.</caption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="moderation" aria-labelledby="moderation-title">
+            <h2 id="moderation-title">Зона модератора</h2>
+            <div class="moderation-grid">
+                <div class="moderation-card">
+                    <h3>Чек-лист перед публикацией</h3>
+                    <p>• Проверить отсутствие личных данных людей на фото.<br>• Убедиться, что история подана в юмористическом ключе.<br>• Подтвердить наличие ключевого слова «Голд» в тексте.</p>
+                </div>
+                <div class="moderation-card">
+                    <h3>График</h3>
+                    <p>Пн — планирование контента.<br>Ср — проверка историй на соответствие правилам.<br>Пт — публикация и продвижение в соцсетях.</p>
+                </div>
+                <div class="moderation-card advert">
+                    <strong>Вязка с Голдом</strong>
+                    <p>Породистый золотистый ретривер с отличной родословной. Дружелюбный, здоровый, с сертифицированными прививками.</p>
+                    <span class="advert-call">Записаться на вязку</span>
+                    <p>Пишите в Telegram <strong>@golden_gold</strong> или звоните +7 (921) 000-00-00.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacts">
+        <nav>
+            <a href="#stories">Истории</a>
+            <a href="#gallery">Фото</a>
+            <a href="#moderation">Модерация</a>
+            <a href="https://galanvova.github.io/Gold/" target="_blank" rel="noopener">Оригинальный сайт</a>
+        </nav>
+        <p>Связь с куратором: <strong>gold.club@mail.ru</strong></p>
+        <p>© 2024 Gold the Dog. Все истории одобрены модерацией.</p>
+    </footer>
 </body>
 </html>
